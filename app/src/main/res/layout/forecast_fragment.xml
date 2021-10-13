@@ -1,13 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.ForecastFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+        <variable
+            name="forecastViewModel"
+            type="com.pkgupta.weatherapp.ui.ForecastViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_marginStart="@dimen/margin_page_start"
+        android:layout_marginEnd="@dimen/margin_page_start"
+        tools:context=".ui.ForecastFragment">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/tv_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{forecastViewModel.forecast.placeName}"
+            android:textSize="@dimen/text_city_name"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Bengaluru" />
+
+        <TextView
+            android:id="@+id/tv_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/format_temp, forecastViewModel.forecast.currentTemp)}"
+            android:textSize="@dimen/text_current_temp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_city"
+            tools:text="30\u2103" />
+
+        <TextView
+            android:id="@+id/tv_weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@{forecastViewModel.forecast.weatherDesc}"
+            android:textSize="@dimen/text_weather_disc"
+            app:layout_constraintBottom_toBottomOf="@id/tv_temp"
+            app:layout_constraintEnd_toStartOf="@id/tv_min_temp"
+            app:layout_constraintTop_toTopOf="@id/tv_temp"
+            tools:text="Clouds" />
+
+        <TextView
+            android:id="@+id/tv_min_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/format_temp, forecastViewModel.forecast.minTemp)}"
+            app:layout_constraintBottom_toTopOf="@id/tv_max_temp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_temp"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:textSize="@dimen/text_min_temp"
+            tools:text="30\u2103" />
+
+        <TextView
+            android:id="@+id/tv_max_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/format_temp, forecastViewModel.forecast.maxTemp)}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_temp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_min_temp"
+            app:layout_constraintTop_toBottomOf="@id/tv_min_temp"
+            android:textSize="@dimen/text_min_temp"
+            tools:text="35\u2103" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

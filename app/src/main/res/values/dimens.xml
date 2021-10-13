@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="margin_page_start">16dp</dimen>
+    <dimen name="text_city_name">56sp</dimen>
+    <dimen name="text_current_temp">48sp</dimen>
+    <dimen name="text_weather_disc">32sp</dimen>
+    <dimen name="text_min_temp">16sp</dimen>
 </resources>

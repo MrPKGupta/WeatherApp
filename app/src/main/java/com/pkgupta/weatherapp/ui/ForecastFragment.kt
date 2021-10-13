@@ -1,32 +1,33 @@
 package com.pkgupta.weatherapp.ui
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.pkgupta.weatherapp.R
+import com.pkgupta.weatherapp.databinding.ForecastFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class ForecastFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = ForecastFragment()
-    }
-
-    private lateinit var viewModel: ForecastViewModel
+@AndroidEntryPoint
+class ForecastFragment : Fragment(R.layout.forecast_fragment) {
+    private val viewModel: ForecastViewModel by activityViewModels()
+    private lateinit var binding: ForecastFragmentBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.forecast_fragment, container, false)
-    }
+    ): View {
+        binding = ForecastFragmentBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.forecastViewModel = viewModel
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ForecastViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+        binding.tvCity.isSelected = true
 
+        return binding.root
+    }
 }

@@ -1,4 +1,4 @@
-package com.pkgupta.weatherapp.network
+package com.pkgupta.weatherapp.api
 
 class ApiRequestClient {
 }

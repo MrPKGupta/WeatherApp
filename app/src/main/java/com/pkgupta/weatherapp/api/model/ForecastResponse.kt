@@ -1,4 +1,4 @@
-package com.pkgupta.weatherapp.network.model
+package com.pkgupta.weatherapp.api.model
 
 import com.google.gson.annotations.SerializedName
 

@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface ForecastService {
+interface ForecastEndPoint {
 
     @GET("weather")
     suspend fun getForecast(
@@ -21,7 +21,7 @@ interface ForecastService {
     companion object {
         private const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
 
-        fun create(): ForecastService {
+        fun create(): ForecastEndPoint {
             val logger = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC }
 
             val client = OkHttpClient.Builder()
@@ -33,7 +33,7 @@ interface ForecastService {
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(ForecastService::class.java)
+                .create(ForecastEndPoint::class.java)
         }
     }
 }
