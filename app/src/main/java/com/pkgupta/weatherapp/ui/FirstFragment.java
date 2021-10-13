@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.pkgupta.weatherapp.R;
 import com.pkgupta.weatherapp.ui.databinding.FragmentFirstBinding;
 
 public class FirstFragment extends Fragment {
