@@ -5,4 +5,5 @@
     <dimen name="text_current_temp">48sp</dimen>
     <dimen name="text_weather_disc">32sp</dimen>
     <dimen name="text_min_temp">16sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

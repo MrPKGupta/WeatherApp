@@ -15,6 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WeatherApp">
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.WeatherApp.NoActionBar" />
         <activity android:name=".ui.ForecastActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
